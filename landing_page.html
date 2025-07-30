@@ -6,89 +6,164 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-    margin: 0;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #ffffff;
-    color: #0f3e7a; /* dark blue for text */
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f2fdf3;
+      color: #333;
     }
 
     header {
-    background-color: #1a5d1a; /* dark green */
-    color: white;
-    text-align: center;
-    padding: 20px;
+      background-color: #1a5d1a;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+
+    header p {
+      margin: 5px 0 0;
+      font-size: 14px;
     }
 
     nav {
-    display: flex;
-    justify-content: center;
-    background-color: #d35400; /* dark orange */
-    padding: 12px;
-    flex-wrap: wrap;
+      display: flex;
+      justify-content: center;
+      background-color: #d35400;
+      padding: 12px;
+      flex-wrap: wrap;
     }
 
     nav a {
-    color: white;
-    text-decoration: none;
-    margin: 8px 15px;
-    font-weight: bold;
+      color: white;
+      text-decoration: none;
+      margin: 8px 15px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
     }
 
     .ticker {
-    background-color: #f7f1e1; /* match tabs background */
-    padding: 10px;
-    color: #d35400; /* dark orange */
-    font-weight: bold;
-    border-top: 2px solid #d35400;
-    border-bottom: 2px solid #d35400;
+      background-color: #fffbe6;
+      padding: 10px;
+      color: #d35400;
+      font-weight: bold;
+      border-top: 2px solid #d35400;
+      border-bottom: 2px solid #d35400;
     }
 
     .hero {
-    background-color: #ffffff;
-    border-bottom: 1px solid #000000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 30px 20px;
+      background-color: white;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .hero-text {
+      flex: 1 1 60%;
     }
 
     .hero-text h2 {
-    font-size: 28px;
-    color: #1a5d1a; /* dark green */
+      font-size: 28px;
+      color: #1a5d1a;
+      margin-bottom: 10px;
     }
 
     .hero-text p {
-    font-size: 16px;
-    line-height: 1.6;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .hero-image {
+      flex: 1 1 30%;
+      text-align: center;
     }
 
     .hero-image div {
-    background-color: #f7f1e1;
-    border: 2px dashed #000000;
-    color: #0f3e7a;
+      width: 150px;
+      height: 150px;
+      background-color: #e2e8f0;
+      border: 2px dashed #999;
+      border-radius: 12px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #555;
+      font-size: 14px;
+    }
+
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
     }
 
     .announcements, .documents {
-    background-color: #ffffff;
-    border: 1px solid #000000;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      flex: 1 1 45%;
+      background-color: #ffffff;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
 
     .announcements h3, .documents h3 {
-    color: #1a5d1a; /* dark green */
-    border-bottom: 2px solid #1a5d1a;
+      color: #1a5d1a;
+      border-bottom: 2px solid #1a5d1a;
+      padding-bottom: 8px;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
     }
 
     a {
-    color: #d35400; /* dark orange links */
+      color: #d35400;
+      text-decoration: none;
     }
 
+    a:hover {
+      text-decoration: underline;
+    }
 
     footer {
-    text-align: center;
-    padding: 15px;
-    background-color: #1a5d1a;
-    color: white;
-    margin-top: 30px;
+      text-align: center;
+      padding: 15px;
+      background-color: #1a5d1a;
+      color: white;
+      margin-top: 30px;
     }
-</style>
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-image {
+        margin-top: 20px;
+      }
+
+      .content {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
 
