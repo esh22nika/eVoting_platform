@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DeshKaVote - Sign In / Registration</title>
+<style>
+  /* Reset and base */
+  * {
+    box-sizing: border-box;
+  }
+  body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Container card */
+  .auth-card {
+    background: #ffffff;
+    border-radius: 8px;
+    border: 2px solid #000000; /* black border */
+    width: 360px;
+    max-width: 95%;
+    padding: 28px 24px 36px;
+    text-align: center;
+  }
+
+  /* Logo */
+  .logo {
+    font-weight: 700;
+    font-size: 28px;
+    color: #1a5d1a; /* dark green */
+    margin-bottom: 8px;
+  }
+
+  /* Welcome text */
+  .welcome-text {
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 4px;
+    color: #1a5d1a; /* dark green */
+  }
+  .welcome-subtext {
+    font-weight: 400;
+    font-size: 14px;
+    color: #d35400; /* dark orange */
+    margin-bottom: 28px;
+  }
+
+  /* Tab buttons for Sign In / Registration */
+  .tabs {
+    display: flex;
+    border-radius: 4em;
+    background: #f7f1e1; /* off-white/saffron toned subtle background */
+    margin-bottom: 24px;
+    user-select: none;
+    border: 1px solid #000000; /* black border */
+  }
+  .tab {
+    flex: 1;
+    padding: 10px 0;
+    cursor: pointer;
+    font-weight: 600;
+    color: #0f3e7a; /* dark blue */
+    border-radius: 4em;
+    transition: background-color 0.2s ease;
+    user-select: none;
+    border: none;
+    text-align: center;
+  }
+  .tab.active {
+    background: #1a5d1a; /* dark green */
+    color: white;
+  }
+
+  /* Form styles */
+  form {
+    text-align: left;
+  }
+  label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #0f3e7a; /* dark blue */
+  }
+  input {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 15px;
+    border-radius: 4px;
+    border: 1px solid #000000; /* black border */
+    margin-bottom: 20px;
+    color: #0f3e7a; /* text color dark blue */
+    background: #fff;
+    box-shadow: none;
+    outline: none;
+  }
+  input::placeholder {
+    color: #868686;
+  }
+  input:focus {
+    border-color: #1a5d1a; /* dark green */
+  }
+
+  /* Forgot password link */
+  .forgot-password {
+    font-size: 13px;
+    color: #d35400; /* dark orange */
+    margin-bottom: 24px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .forgot-password:hover {
+    text-decoration: underline;
+  }
+
+  /* Submit button */
+  button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background: #1a5d1a; /* dark green */
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    border-radius: 4px;
+    cursor: not-allowed;
+  }
+
+  /* Create account link */
+  .create-account {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #0f3e7a; /* dark blue */
+    cursor: pointer;
+    text-align: center;
+    user-select: none;
+  }
+  .create-account:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+
+<div class="auth-card">
+  <div class="logo">DeshKaVote</div>
+  <div class="welcome-text" id="formTitle">Welcome</div>
+  <div class="welcome-subtext" id="formSubtitle">Welcome back, please login to your account.</div>
+
+  <div class="tabs">
+    <div class="tab active" id="tabSignIn">Sign In</div>
+    <div class="tab" id="tabRegister">Registration</div>
+  </div>
+
+  <!-- SIGN IN FORM -->
+  <form id="signinForm" novalidate>
+    <label for="signinEmail">Voter ID *</label>
+    <input type="text" id="signinEmail" placeholder="Enter your Voter ID" required readonly />
+
+    <label for="signinPassword">Password *</label>
+    <input type="password" id="signinPassword" placeholder="•••••••••••••••" required readonly />
+
+    <div class="forgot-password" tabindex="0" role="button" aria-pressed="false" onclick="alert('Password reset functionality coming soon.')">Forgot Password?</div>
+
+    <button type="submit" disabled>Login</button>
+  </form>
+
+  <!-- REGISTRATION FORM -->
+  <form id="registerForm" style="display:none" novalidate>
+    <label for="firstName">First Name *</label>
+    <input type="text" id="firstName" placeholder="Enter your first name" required readonly />
+
+    <label for="lastName">Last Name *</label>
+    <input type="text" id="lastName" placeholder="Enter your last name" required readonly />
+
+    <label for="email">Email Address *</label>
+    <input type="email" id="email" placeholder="Enter your email address" required readonly />
+
+    <label for="mobile">Mobile Number *</label>
+    <input type="tel" id="mobile" placeholder="Enter your mobile number" required readonly />
+
+    <label for="dob">Date of Birth *</label>
+    <input type="date" id="dob" required readonly />
+
+    <label for="voterId">Voter ID</label>
+    <input type="text" id="voterId" placeholder="Enter your Voter ID" readonly />
+
+    <label for="password">Password *</label>
+    <input type="password" id="password" placeholder="Enter password" required readonly />
+
+    <label for="confirmPassword">Confirm Password *</label>
+    <input type="password" id="confirmPassword" placeholder="Confirm password" required readonly />
+
+    <button type="submit" disabled>Register</button>
+  </form>
+
+  <div class="create-account" id="toggleText" tabindex="0" role="button" aria-pressed="false">
+    Don't have an account? Create an Account
+  </div>
+</div>
+
+<script>
+  const tabSignIn = document.getElementById('tabSignIn');
+  const tabRegister = document.getElementById('tabRegister');
+  const signinForm = document.getElementById('signinForm');
+  const registerForm = document.getElementById('registerForm');
+  const formTitle = document.getElementById('formTitle');
+  const formSubtitle = document.getElementById('formSubtitle');
+  const toggleText = document.getElementById('toggleText');
+
+  function switchForm(form) {
+    if (form === 'signin') {
+      signinForm.style.display = 'block';
+      registerForm.style.display = 'none';
+      tabSignIn.classList.add('active');
+      tabRegister.classList.remove('active');
+      formTitle.textContent = 'Welcome';
+      formSubtitle.textContent = 'Welcome back, please login to your account.';
+      toggleText.textContent = "Don't have an account? Create an Account";
+    } else {
+      signinForm.style.display = 'none';
+      registerForm.style.display = 'block';
+      tabSignIn.classList.remove('active');
+      tabRegister.classList.add('active');
+      formTitle.textContent = 'Create Account';
+      formSubtitle.textContent = 'Please fill the form to create an account.';
+      toggleText.textContent = "Already have an account? Sign In";
+    }
+  }
+
+  tabSignIn.addEventListener('click', () => switchForm('signin'));
+  tabRegister.addEventListener('click', () => switchForm('register'));
+  toggleText.addEventListener('click', () => {
+    if (signinForm.style.display === 'none' || signinForm.style.display === '') {
+      switchForm('signin');
+    } else {
+      switchForm('register');
+    }
+  });
+
+  switchForm('signin');
+</script>
+
+</body>
+</html>
