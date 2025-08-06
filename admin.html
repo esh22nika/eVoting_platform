@@ -4,135 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>DeshKaVote - Admin Interface</title>
-<style>
-  /* Reset and base */
-  * {
-    box-sizing: border-box;
-  }
-  body, html {
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #ffffff;
-    color: #0f3e7a; /* dark blue */
-  }
-
-  header {
-    background-color: #138808; /* Indian flag green */
-    color: white;
-    padding: 18px 24px;
-    text-align: center;
-    font-weight: 700;
-    font-size: 1.6rem;
-  }
-
-  main {
-    max-width: 960px;
-    margin: 24px auto;
-    padding: 0 16px 40px;
-  }
-
-  h2 {
-    border-bottom: 3px solid #f58220; /* Indian flag orange */
-    padding-bottom: 8px;
-    margin-bottom: 20px;
-    font-weight: 700;
-    font-size: 1.4rem;
-  }
-
-  section {
-    margin-bottom: 40px;
-    border: 1px solid #000;
-    border-radius: 8px;
-    padding: 20px 24px;
-    background-color: #f7f1e1; /* subtle saffron */
-  }
-
-  label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: 600;
-    color: #0f3e7a;
-    font-size: 1rem;
-  }
-
-  input[type="text"],
-  input[type="email"],
-  input[type="password"],
-  input[type="date"],
-  input[type="datetime-local"],
-  select {
-    width: 100%;
-    padding: 10px 14px;
-    margin-bottom: 18px;
-    border: 1px solid #000000;
-    border-radius: 4px;
-    font-size: 1rem;
-    color: #0f3e7a;
-    background: #ffffff;
-    outline: none;
-    box-shadow: none;
-  }
-
-  button {
-    padding: 12px 28px;
-    font-weight: 700;
-    font-size: 1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #138808;
-    color: white;
-    user-select: none;
-    transition: background-color 0.3s ease;
-  }
-  button:hover:not(:disabled) {
-    background-color: #0f580f;
-  }
-  button:disabled {
-    background-color: #a5d6a7;
-    cursor: not-allowed;
-    color: #eee;
-  }
-
-  /* Tables */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 12px;
-  }
-
-  th, td {
-    border: 1px solid #000;
-    padding: 10px 14px;
-    text-align: left;
-    font-size: 0.95rem;
-    vertical-align: middle;
-  }
-  th {
-    background-color: #f7f1e1;
-    color: #055a8c;
-    font-weight: 700;
-  }
-
-  /* Checkbox for verification */
-  input[type="checkbox"] {
-    transform: scale(1.2);
-    cursor: pointer;
-  }
-
-  /* Form group */
-  .form-group {
-    margin-bottom: 24px;
-  }
-
-  /* Responsive */
-  @media (max-width: 700px) {
-    button {
-      width: 100%;
-    }
-  }
-</style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -140,62 +13,70 @@
   DeshKaVote - Admin Interface
 </header>
 
-<main>
+<main class="container">
 
   <!-- Voter Verification -->
-  <section aria-labelledby="voter-verify-title">
-    <h2 id="voter-verify-title">Verify Voters</h2>
+  <section aria-labelledby="voter-verify-title" class="my-4 p-4 border rounded">
+    <h2 id="voter-verify-title" class="pb-2 mb-4 border-bottom border-warning">Verify Voters</h2>
 
     <form aria-label="Voter verification form" onsubmit="return false;">
-      <label for="voterSearch">Search Voter ID</label>
-      <input type="text" id="voterSearch" name="voterSearch" placeholder="Enter Voter ID to search" autocomplete="off" />
+      <div class="mb-3">
+        <label for="voterSearch" class="form-label fw-bold">Search Voter ID</label>
+        <input type="text" id="voterSearch" name="voterSearch" class="form-control" placeholder="Enter Voter ID to search" autocomplete="off" />
+      </div>
 
-      <table aria-describedby="voter-list-desc" role="grid" tabindex="0">
-        <caption id="voter-list-desc" class="sr-only">List of voters requiring verification</caption>
-        <thead>
-          <tr>
-            <th scope="col">Voter ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Age</th>
-            <th scope="col">Verified</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>VTR123456</td>
-            <td>Ramesh Kumar</td>
-            <td>42</td>
-            <td><input type="checkbox" aria-label="Mark Ramesh Kumar as verified" /></td>
-          </tr>
-          <tr>
-            <td>VTR987654</td>
-            <td>Sangeeta Devi</td>
-            <td>36</td>
-            <td><input type="checkbox" aria-label="Mark Sangeeta Devi as verified" /></td>
-          </tr>
-          <tr>
-            <td>VTR456789</td>
-            <td>Ajay Singh</td>
-            <td>29</td>
-            <td><input type="checkbox" aria-label="Mark Ajay Singh as verified" /></td>
-          </tr>
-        </tbody>
-      </table>
-      <button type="submit" disabled>Update Verification</button>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped" aria-describedby="voter-list-desc" role="grid" tabindex="0">
+          <caption id="voter-list-desc" class="sr-only">List of voters requiring verification</caption>
+          <thead>
+            <tr>
+              <th scope="col">Voter ID</th>
+              <th scope="col">Aadhar Verified</th>
+              <th scope="col">PAN Verified</th>
+              <th scope="col">Voter ID Doc Verified</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>VTR123456</td>
+              <td><input type="checkbox" class="form-check-input" aria-label="Aadhar verification status for VTR123456" checked /></td>
+              <td><input type="checkbox" class="form-check-input" aria-label="PAN verification status for VTR123456" checked /></td>
+              <td><input type="checkbox" class="form-check-input" aria-label="Voter ID document verification status for VTR123456" /></td>
+              <td><button class="btn verify-button btn-sm" aria-label="Verify voter VTR123456">Verify</button></td>
+            </tr>
+            <tr>
+              <td>VTR987654</td>
+              <td><input type="checkbox" class="form-check-input" aria-label="Aadhar verification status for VTR987654" /></td>
+              <td><input type="checkbox" class="form-check-input" aria-label="PAN verification status for VTR987654" /></td>
+              <td><input type="checkbox" class="form-check-input" aria-label="Voter ID document verification status for VTR987654" checked /></td>
+              <td><button class="btn verify-button btn-sm" aria-label="Verify voter VTR987654">Verify</button></td>
+            </tr>
+            <tr>
+              <td>VTR456789</td>
+              <td><input type="checkbox" class="form-check-input" aria-label="Aadhar verification status for VTR456789" checked /></td>
+              <td><input type="checkbox" class="form-check-input" aria-label="PAN verification status for VTR456789" /></td>
+              <td><input type="checkbox" class="form-check-input" aria-label="Voter ID document verification status for VTR456789" /></td>
+              <td><button class="btn verify-button btn-sm" aria-label="Verify voter VTR456789">Verify</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button type="submit" class="btn btn-primary mt-3" disabled>Update Verification</button>
     </form>
   </section>
 
   <!-- Add Candidates -->
-  <section aria-labelledby="add-candidate-title">
-    <h2 id="add-candidate-title">Add Candidate</h2>
+  <section aria-labelledby="add-candidate-title" class="my-4 p-4 border rounded">
+    <h2 id="add-candidate-title" class="pb-2 mb-4 border-bottom border-warning">Add Candidate</h2>
     <form aria-label="Add candidate form" onsubmit="return false;">
-      <div class="form-group">
-        <label for="candidateName">Candidate Name</label>
-        <input type="text" id="candidateName" name="candidateName" placeholder="Enter candidate full name" required />
+      <div class="mb-3">
+        <label for="candidateName" class="form-label fw-bold">Candidate Name</label>
+        <input type="text" id="candidateName" name="candidateName" class="form-control" placeholder="Enter candidate full name" required />
       </div>
-      <div class="form-group">
-        <label for="candidateParty">Party</label>
-        <select id="candidateParty" name="candidateParty" required>
+      <div class="mb-3">
+        <label for="candidateParty" class="form-label fw-bold">Party</label>
+        <select id="candidateParty" name="candidateParty" class="form-select" required>
           <option value="" disabled selected>Select party</option>
           <option value="BJP">BJP</option>
           <option value="Congress">Congress</option>
@@ -205,39 +86,132 @@
           <option value="Other">Other</option>
         </select>
       </div>
-      <div class="form-group">
-        <label for="candidateConstituency">Constituency / Ward</label>
-        <input type="text" id="candidateConstituency" name="candidateConstituency" placeholder="Enter constituency or ward" required />
+      <div class="mb-3">
+        <label for="candidateConstituency" class="form-label fw-bold">Constituency / Ward</label>
+        <input type="text" id="candidateConstituency" name="candidateConstituency" class="form-control" placeholder="Enter constituency or ward" required />
       </div>
-      <div class="form-group">
-        <label for="candidateSymbol">Party Symbol</label>
-        <input type="text" id="candidateSymbol" name="candidateSymbol" placeholder="Enter symbol name" required />
+      <div class="mb-3">
+        <label for="candidateSymbol" class="form-label fw-bold">Party Symbol</label>
+        <input type="text" id="candidateSymbol" name="candidateSymbol" class="form-control" placeholder="Enter symbol name" required />
       </div>
-      <button type="submit">Add Candidate</button>
+      <div class="mb-3">
+        <label for="candidateEducation" class="form-label fw-bold">Education</label>
+        <input type="text" id="candidateEducation" name="candidateEducation" class="form-control" placeholder="e.g., PhD in Political Science" />
+      </div>
+      <button type="submit" class="btn btn-primary">Add Candidate</button>
     </form>
   </section>
 
   <!-- Create Election -->
-  <section aria-labelledby="create-election-title">
-    <h2 id="create-election-title">Create Election</h2>
+  <section aria-labelledby="create-election-title" class="my-4 p-4 border rounded">
+    <h2 id="create-election-title" class="pb-2 mb-4 border-bottom border-warning">Create Election</h2>
     <form aria-label="Create election form" onsubmit="return false;">
-      <div class="form-group">
-        <label for="electionName">Election Name</label>
-        <input type="text" id="electionName" name="electionName" placeholder="Enter election name" required />
+      <div class="mb-3">
+        <label for="electionState" class="form-label fw-bold">State</label>
+        <select id="electionState" name="electionState" class="form-select" required>
+          <option value="" disabled selected>Select State</option>
+          <option value="Uttar Pradesh">Uttar Pradesh</option>
+          <option value="Delhi">Delhi</option>
+          <option value="Bihar">Bihar</option>
+          <option value="Maharashtra">Maharashtra</option>
+          <option value="West Bengal">West Bengal</option>
+          <option value="Tamil Nadu">Tamil Nadu</option>
+          <option value="Karnataka">Karnataka</option>
+          <option value="Gujarat">Gujarat</option>
+          <option value="Rajasthan">Rajasthan</option>
+          <option value="Madhya Pradesh">Madhya Pradesh</option>
+          <option value="Kerala">Kerala</option>
+          <option value="Punjab">Punjab</option>
+          <option value="Haryana">Haryana</option>
+          <option value="Odisha">Odisha</option>
+          <option value="Andhra Pradesh">Andhra Pradesh</option>
+          <option value="Telangana">Telangana</option>
+          <option value="Assam">Assam</option>
+          <option value="Chhattisgarh">Chhattisgarh</option>
+          <option value="Jharkhand">Jharkhand</option>
+          <option value="Uttarakhand">Uttarakhand</option>
+          <option value="Himachal Pradesh">Himachal Pradesh</option>
+          <option value="Goa">Goa</option>
+          <option value="Meghalaya">Meghalaya</option>
+          <option value="Manipur">Manipur</option>
+          <option value="Mizoram">Mizoram</option>
+          <option value="Nagaland">Nagaland</option>
+          <option value="Sikkim">Sikkim</option>
+          <option value="Tripura">Tripura</option>
+          <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+          <!-- Add more states as needed -->
+        </select>
       </div>
-      <div class="form-group">
-        <label for="startDate">Start Date & Time</label>
-        <input type="datetime-local" id="startDate" name="startDate" required />
+      <div class="mb-3">
+        <label for="electionType" class="form-label fw-bold">Election Type</label>
+        <select id="electionType" name="electionType" class="form-select" required>
+          <option value="" disabled selected>Select Election Type</option>
+          <option value="General Election">General Election</option>
+          <option value="State Assembly">State Assembly</option>
+          <option value="Municipal">Municipal</option>
+          <option value="Panchayat">Panchayat</option>
+          <option value="By-Election">By-Election</option>
+          <!-- Add more election types as needed -->
+        </select>
       </div>
-      <div class="form-group">
-        <label for="endDate">End Date & Time</label>
-        <input type="datetime-local" id="endDate" name="endDate" required />
+      <div class="mb-3">
+        <label for="electionYear" class="form-label fw-bold">Year</label>
+        <select id="electionYear" name="electionYear" class="form-select" required>
+          <option value="" disabled selected>Select Year</option>
+          <script>
+            // Dynamically generate years for the dropdown
+            const currentYear = new Date().getFullYear();
+            for (let i = currentYear - 5; i <= currentYear + 5; i++) {
+              document.write(`<option value="${i}">${i}</option>`);
+            }
+          </script>
+        </select>
       </div>
-      <button type="submit">Create Election</button>
+      <div class="mb-3">
+        <label for="electionName" class="form-label fw-bold">Election Name</label>
+        <input type="text" id="electionName" name="electionName" class="form-control" placeholder="Enter election name (e.g., General Election 2024)" required />
+      </div>
+      <div class="mb-3">
+        <label for="startDate" class="form-label fw-bold">Start Date & Time</label>
+        <input type="datetime-local" id="startDate" name="startDate" class="form-control" required />
+      </div>
+      <div class="mb-3">
+        <label for="endDate" class="form-label fw-bold">End Date & Time</label>
+        <input type="datetime-local" id="endDate" name="endDate" class="form-control" required />
+      </div>
+      <button type="submit" class="btn btn-primary">Create Election</button>
+    </form>
+  </section>
+
+  <!-- Download Voter Lists -->
+  <section aria-labelledby="download-voters-title" class="my-4 p-4 border rounded">
+    <h2 id="download-voters-title" class="pb-2 mb-4 border-bottom border-warning">Download Voter Lists</h2>
+    <form aria-label="Download voter lists form" onsubmit="return false;">
+      <div class="mb-3">
+        <label for="downloadRegion" class="form-label fw-bold">Select Region</label>
+        <select id="downloadRegion" name="downloadRegion" class="form-select">
+          <option value="all">All Regions</option>
+          <option value="Uttar Pradesh">Uttar Pradesh</option>
+          <option value="Delhi">Delhi</option>
+          <option value="Bihar">Bihar</option>
+          <option value="Maharashtra">Maharashtra</option>
+          <!-- Add more regions as needed, or dynamically load from data -->
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="downloadStatus" class="form-label fw-bold">Voter Status</label>
+        <select id="downloadStatus" name="downloadStatus" class="form-select">
+          <option value="all">All Registered Voters</option>
+          <option value="voted">Voted</option>
+          <option value="notVoted">Not Voted</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Download List</button>
     </form>
   </section>
 
 </main>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
